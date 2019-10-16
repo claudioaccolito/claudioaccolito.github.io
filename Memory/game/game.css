@@ -1,0 +1,142 @@
+title {
+  width: 100%;
+  margin: 0;
+}
+
+.pc {
+	width:80px;
+	height:80px;
+	margin: 4px;
+	border-radius: 10px;
+    border: 0px #ebebeb;
+	-webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+
+}
+
+.pc:hover {
+	 -webkit-transform: rotate(-8deg);
+     -moz-transform: rotate(-8deg);
+       -o-transform: rotate(-8deg);
+      -ms-transform: rotate(-8deg);
+          transform: rotate(-8deg);
+}
+
+.netbook {
+	width: 68px;
+	height: 68px;
+	margin: 2px;
+	border-radius: 10px;
+    border: 0px #ebebeb;
+	-webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+
+.netbook:hover {
+	 -webkit-transform: rotate(-8deg);
+     -moz-transform: rotate(-8deg);
+       -o-transform: rotate(-8deg);
+      -ms-transform: rotate(-8deg);
+          transform: rotate(-8deg);
+}
+
+.smartphone {
+	width: 50px;
+	height: 50px;
+	margin: 2px;
+}
+
+
+.myImg {
+	border-radius: 10px;
+    border: 2px solid #ebebeb;
+	width: 68px;
+	height: 68px;
+	margin: 2px;
+}
+
+a.menu_links { cursor: pointer; }
+
+td { text-align: center; vertical-align: top;}
+
+p { text-align: center; font-family: 'Holtwood One SC', sans-serif;}
+
+body {
+	background-color: #D0D0D0 ;
+}
+
+#header {
+    height: auto;
+    background: #006699;
+    border-radius: 30px;
+	color: #ffffff;
+	text-align: center;
+	font-size: 60px;
+	font-weight: bold;
+	font-family: 'Belleza', sans-serif;
+	width: 100%;
+	left: 50%;
+
+}
+
+#content {
+	margin:0 auto;
+	text-align: center; 
+	font-weight: bold;
+	font-size: 40px;
+	color: #404040;
+}
+
+#left {
+    margin: 5px;
+	width: 100px;
+	margin-right: 20px;
+	margin:0 auto;
+	text-align: left;
+}
+
+#right {
+    margin: 5px;
+	width: 100px;
+	margin-left: 20px;
+	margin:0 auto;
+	text-align:right;
+}
+
+#footer {
+	width: 300px;
+    height: 20px;
+	color:#ffffff;
+    background: #006699;
+    border-radius: 10px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 100px;
+}
+
+a:link {color:#404040 ;}    /* unvisited link */
+a:visited {color:#707070 ;} /* visited link */
+a:active {color:#000066;}  /* selected link */
+a:hover {color:#0000FF; }
+.myLink {opacity: 1.0; filter: alpha(opacity=100);}
+.myLink:hover {opacity: 0.4;filter: alpha(opacity=40);}
+   
+@font-face {						/* powered by google font */
+  font-family: 'Belleza';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Belleza'), local('Belleza-Regular'), url(font_Belleza.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Holtwood One SC';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Holtwood One SC'), local('HoltwoodOneSC'), url(font_HoltWood.woff) format('woff');
+}

@@ -1,0 +1,47 @@
+.a1 { top: 75vh; }
+
+.arrow {
+        position: absolute;
+        text-align: center;
+        margin: 8% 0;
+}
+.bounce {
+        -webkit-animation: bounce 2s infinite;
+        animation: bounce 2s infinite;
+}
+@-webkit-keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+        }
+        40% {
+                -webkit-transform: translateY(-30px);
+                transform: translateY(-30px);
+        }
+        60% {
+                -webkit-transform: translateY(-15px);
+                transform: translateY(-15px);
+        }
+}
+@keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+        }
+        40% {
+                -webkit-transform: translateY(-30px);
+                transform: translateY(-30px);
+        }
+        60% {
+                -webkit-transform: translateY(-15px);
+                transform: translateY(-15px);
+        }
+}

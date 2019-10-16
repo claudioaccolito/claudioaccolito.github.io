@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email To Claudio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <link rel="stylesheet" href="mail.css">
+</head>
+<body>
+  <header>
+    <h1>EMAIL</h1><a href="../index.html"><img id="home" src="../images/icons/home.png" alt="BackToHome"></a>
+  </header>
+  <div id="form-main">
+    <div id="form-div">
+      <form class="form" id="form1" action="mail.php" method="post" accept-charset="utf-8">
+
+        <p class="name">
+          <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nome" id="name" required/>
+        </p>
+
+        <p class="email">
+          <input name="email" type="email" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" required />
+        </p>
+        
+        <p class="text">
+          <textarea name="message" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Messaggio" required></textarea>
+        </p>
+
+
+        <div class="submit">
+          <input type="submit" value="INVIA" id="button-blue"/>
+          <div class="ease"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="footer">
+    <p>Completa il form con la tua email in modo che io possa risponderti.</p><br>
+    <i>Claudio Accolito</i>
+  </div>
+</body>
+</html>
