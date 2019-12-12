@@ -1,23 +1,23 @@
 
 * {
-        box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body{
-        font-family:"helvetica";
-        margin: 0;
-        background-color: #f4f4f4;
-        transition: background-color 1s ease;
-        text-align: center;
-        font-size: 120%;
-        line-height: 1.618;
-        overflow-x: hidden;
+	font-family:"helvetica";
+	margin: 0;
+	background-color: #f4f4f4;
+	transition: background-color 1s ease;
+	text-align: center;
+	font-size: 120%;
+	line-height: 1.618;
+	overflow-x: hidden;
 }
 
 h1 {
-        font-size: 2em;
-        color: #797979;
-        font-weight: 200;
+	font-size: 2em;
+	color: #797979;
+	font-weight: 200;
 }
 
 h1, h2 {
@@ -27,51 +27,57 @@ h1, h2 {
 }
 
 p {
-        max-width: 30em;
-        margin-bottom: 1.618em;
-        font-size: 1em;
-        font-weight: 500;
-        color: #a2a4aa;
+	max-width: 30em;
+	margin-bottom: 1.618em;
+	font-size: 1em;
+	font-weight: 500;
+	color: #a2a4aa;
 }
 
 .go {
-        position: absolute;
-        top: 85vh;
+	position: absolute;
+	top: 85vh;
 }
 
 footer {
-        height: 130px;
-        text-align: right;
-        background-color: #373B44;
-        color: white;
+	min-height: 10vh;
+	height: 130px;
+	text-align: right;
+	background-color: #373B44;
+	color: white;
 }
 
 .firma {
-        text-align: right;
-        display: inline-block;;
-        margin-top: 50px;
-        padding-right: 40px;
+	text-align: right;
+	display: inline-block;;
+	margin-top: 50px;
+	padding-right: 40px;
 }
 
 .me {
-        width: 200px;
-        height: auto;
+	width: 200px;
+	height: auto;
 }
 
 section {
-        padding: 10px;
+  padding: 10px;
 }
 
 /* panel styles */
 .panel {
   /* min height incase content is higher than window height */
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
   font-family: sans-serif;
   /* outline: 10px solid hotpink; */
   /* turn above on to see the edge of panels */
+}
+
+.social-container {
+  min-height: 10vh;
+	margin-bottom: 20px;
 }
 
 /* colours */
@@ -160,11 +166,9 @@ section {
 }
 
 ul {
-        list-style-type: none;
-        display: inherit;
-        position: absolute;
-        margin-top: 150px;
-        margin-left: -20px;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
 }
 
 .social {
@@ -187,7 +191,8 @@ ul {
 
 .social:hover {
         background-color: #87d5e9;
-        border-radius: 50%;
+				border-radius: 50%;
+				transform:rotate(360deg);
         -webkit-transform:rotate(360deg);
         -moz-transform:rotate(360deg);
         -o-transform:rotate(360deg);
