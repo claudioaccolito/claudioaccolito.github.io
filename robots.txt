@@ -1,0 +1,12 @@
+# Group 1
+User-agent: *
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /img/
+Allow: /img/me.png
+Allow: /img/icon/linkedain.png
+Allow: /img/icon/iconAcco.svg
+Allow: /img/icon/favicon.ico
+Allow: /img/icon/github.svg
+
+Sitemap: https://claudioaccolito.github.io/sitemap.xml
