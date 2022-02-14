@@ -25,6 +25,10 @@ h1 {
   font-weight: 200;
 }
 
+h3 {
+  color: #797979;
+}
+
 h1,
 h2 {
   font-size: 3em;
@@ -38,7 +42,7 @@ p {
   margin-bottom: 1.618em;
   font-size: 1em;
   font-weight: 500;
-  color: #a2a4aa;
+  color: #797979;
   font-family: 'Nunito', sans-serif;
 }
 
