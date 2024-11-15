@@ -195,3 +195,7 @@
 .theme-toggle:hover {
   background-color: rgba(59, 130, 246, 0.1);
 }
+
+.typing-box {
+  height: 5em;
+}
