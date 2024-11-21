@@ -15,7 +15,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="description" content="Claudio Accolito is a Web Developer, Web Designer and Coder." />
 	<meta name="keywords"
-		content="claudio accolito, accolito, accolito claudio, web developer, web designer, developer" />
+		content="claudio accolito, accolito, accolito claudio,, claudioaccolito, accolitoclaudio, frontend developer, web designer, developer" />
 	<meta name="google-site-verification" content="vxU1F9fQHNrVIDoXHdnfFxER_dauEcdkkHSSJ95WLAw" />
 	<link rel="shortcut icon" href="favicon.ico" />
 	<link rel="stylesheet" href="css/stile.css">
@@ -25,283 +25,49 @@
 	<script src="js/script.js"></script>
 </head>
 
-<body class="bg-gray-50 transition-colors duration-300">
-	<!-- Header -->
-	<header
-		class="fixed w-full bg-white dark:bg-gray-900 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm shadow-sm z-50 transition-colors duration-300">
-		<nav class="container mx-auto px-6 py-4">
-			<div class="flex items-center justify-between">
-				<h1 class="text-2xl font-bold gradient-text">Claudio Accolito</h1>
-				<div class="hidden md:flex items-center space-x-8">
-					<a href="#home" class="nav-link text-gray-600 dark:text-gray-300">Home</a>
-					<a href="#me" class="nav-link text-gray-600 dark:text-gray-300">About</a>
-					<a href="#skills" class="nav-link text-gray-600 dark:text-gray-300">Skills</a>
-					<a href="#contact" class="nav-link text-gray-600 dark:text-gray-300">Contacts</a>
-					<button onclick="toggleTheme()" class="theme-toggle text-gray-600 dark:text-gray-300 theme-toggle"
-						aria-label="Toggle theme">
-						🌓
-					</button>
-				</div>
-			</div>
-		</nav>
-	</header>
+<body class="transition-colors duration-300">
 
 	<!-- Hero Section -->
 	<section id="home"
-		class="min-h-screen flex items-center justify-center pt-20 px-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+		class="min-h-screen flex items-center justify-center pt-20 py-8 bg-gray-900 duration-300">
 		<div class="container mx-auto text-center animate-fade-in">
 			<div class="max-w-3xl mx-auto">
 				<h2 class="fadeIn text-6xl font-bold mb-6">
-					<span class="gradient-text block mt-2 bottom-space">Senior Frontend Developer</span>
+					<span class="gradient-text block mt-2 bottom-space">Claudio Accolito</span>
 					<!-- <span class="big-bottom-space"></span> -->
 				</h2>
 				<p class="fadeIn text-xl text-gray-600 dark:text-gray-300 mb-8 animate-float">
-					HI, I'm Claudio!
+					Senior Frontend Developer
 				</p>
 				<div class="flex justify-center space-x-4">
-					<a href="#me"
+					<!-- <a href="#me"
 						class="fadeIn px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition animate-glow">
 						Claudio who?
-					</a>
-					<a href="#contact"
+					</a> -->
+					<!-- <a href="#contact"
 						class="fadeIn px-8 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition">
 						Contact me
-					</a>
+					</a> -->
+					<div class="max-w-2xl mx-auto">
+						<div class="flex justify-center space-x-6">
+							<a href="https://github.com/claudioaccolito"
+								class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
+								<i class="fab fa-github text-3xl"></i>
+							</a>
+							<a href="https://it.linkedin.com/in/claudio-accolito-420766a7"
+								class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
+								<i class="fab fa-linkedin text-3xl"></i>
+							</a>
+							<a href="https://x.com/ClaudioAccolito"
+								class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
+								<i class="fab fa-twitter text-3xl"></i>
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
-	<section id="me"
-		class="bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-900 dark:to-indigo-900 text-white min-h-screen flex items-center transition-colors">
-		<div class="container mx-auto px-6 py-24">
-			<div class="grid md:grid-cols-2 gap-12 items-center">
-				<div class="animate__animated animate__fadeInLeft">
-					<h1 class="text-5xl font-bold mb-6">Claudio Accolito</h1>
-					<h2 class="text-3xl mb-8 text-blue-200 typing-box">
-						<span href="" class="typewrite" data-period="2000" data-type='
-							[
-								"I enjoy building fast and user-friendly web apps",
-								"My work is driven by a strong focus on technology and results",
-								"I like turning designs into smooth web experiences", 
-								"Writing clean, maintainable code is one of my top priorities", 
-								"I enjoy designing and developing user interfaces", 
-								"Sometimes, I also work on backend projects"
-							]
-						'>
-							<span class="wrap"></span>
-						</span>
-					</h2>
-					<!-- <p class="text-xl mb-12"></p> -->
-				</div>
-				<div class="relative animate__animated animate__fadeInRight">
-					<img src="./me.jpg" alt="Profile"
-						class="fadeIn rounded-full w-64 h-64 mx-auto shadow-2xl float-animation">
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Skills Section -->
-	<section id="skills" class="py-24 bg-white dark:bg-gray-800 transition-colors">
-		<div class="container mx-auto px-6">
-			<h2 class="text-4xl font-bold text-center mb-16 dark:text-white">Tech Skills</h2>
-			<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<i class="fab fa-react text-4xl text-blue-500 mb-4"></i>
-					<h3 class="font-semibold dark:text-white">React</h3>
-				</div>
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<i class="fab fa-node text-4xl text-green-500 mb-4"></i>
-					<h3 class="font-semibold dark:text-white">Node.js</h3>
-				</div>
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<i class="fab fa-js text-4xl text-yellow-500 mb-4"></i>
-					<h3 class="font-semibold dark:text-white">JavaScript</h3>
-				</div>
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<!-- <i class="fab fa-svelte text-4xl text-pink-500 mb-4"></i> -->
-					<img class="w-8 h-8 mx-auto mb-4" src="./img/icon/svelte.png" />
-					<h3 class="font-semibold dark:text-white">Svelte</h3>
-				</div>
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<img class="w-8 h-8 mx-auto mb-4" src="./img/icon/electron.png" />
-					<h3 class="font-semibold dark:text-white">Electron</h3>
-				</div>
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<i class="fab fa-php text-4xl text-purple-500 mb-4"></i>
-					<h3 class="font-semibold dark:text-white">PHP</h3>
-				</div>
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<i class="fab fa-git text-4xl text-yellow-500 mb-4"></i>
-					<h3 class="font-semibold dark:text-white">Git</h3>
-				</div>
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<img class="w-8 h-8 mx-auto mb-4" src="./img/icon/redux.png" />
-					<h3 class="font-semibold dark:text-white">Redux</h3>
-				</div>
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<i class="fab fa-java text-4xl text-red-500 mb-4"></i>
-					<h3 class="font-semibold dark:text-white">Java</h3>
-				</div>
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<img class="w-8 h-8 mx-auto mb-4" src="./img/icon/webpack.png" />
-					<h3 class="font-semibold dark:text-white">Webpack</h3>
-				</div>
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<img class="w-8 h-8 mx-auto mb-4" src="./img/icon/pgadmin.svg" />
-					<h3 class="font-semibold dark:text-white">Postgres</h3>
-				</div>
-				<div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg text-center hover:shadow-lg transition">
-					<img class="w-8 h-8 mx-auto mb-4" src="./img/icon/mysql.png" />
-					<h3 class="font-semibold dark:text-white">MySql</h3>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Skills Section -->
-	<!-- <section id="skills" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div class="container mx-auto px-6">
-            <h3 class="text-3xl font-bold text-center mb-16 gradient-text">Competenze Tecniche</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div
-                    class="skill-card p-6 rounded-xl shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300">
-                    <h4 class="text-xl font-semibold mb-4 dark:text-white">Frontend Core</h4>
-                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
-                            <span>HTML5 & CSS3</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
-                            <span>JavaScript ES6+</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
-                            <span>TypeScript</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
-                            <span>Responsive Design</span>
-                        </li>
-                    </ul>
-                </div>
-                <div
-                    class="skill-card p-6 rounded-xl shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300">
-                    <h4 class="text-xl font-semibold mb-4 dark:text-white">Framework & Libraries</h4>
-                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
-                            <span>React.js</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
-                            <span>Next.js</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
-                            <span>Vue.js</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
-                            <span>Tailwind CSS</span>
-                        </li>
-                    </ul>
-                </div>
-                <div
-                    class="skill-card p-6 rounded-xl shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300">
-                    <h4 class="text-xl font-semibold mb-4 dark:text-white">Tools & Workflow</h4>
-                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
-                            <span>Git & GitHub</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
-                            <span>Webpack</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
-                            <span>Jest & Testing Library</span>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
-                            <span>CI/CD</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-	<!-- Projects Section -->
-	<!-- <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-        <div class="container mx-auto px-6">
-            <h3 class="text-3xl font-bold text-center mb-16 gradient-text">Side projects</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
-                    <img src="img/mockup/fake.png" alt="Project 1" class="w-full h-full object-cover" />
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold mb-2">Rappers platform</h4>
-                        <p class="text-gray-600 mb-4">
-                           Just an old and never used awesome app
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">PHP</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">JS</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">SASS</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
-                    <img src="img/mockup/cma.png" alt="Project 2" class="w-full h-full object-cover" />
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold mb-2">CMS for a Medical Center</h4>
-                        <p class="text-gray-600 mb-4">
-                            Project developed for the graduation internship
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Drupal</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">CSS</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-
-	<!-- Contact Section -->
-	<section id="contact" class="py-24 bg-white dark:bg-gray-800 transition-colors">
-		<div class="container mx-auto px-6">
-			<h2 class="text-4xl font-bold text-center mb-16 dark:text-white">Get in Touch</h2>
-			<div class="max-w-2xl mx-auto">
-				<div class="flex justify-center space-x-6">
-					<a href="https://github.com/claudioaccolito"
-						class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
-						<i class="fab fa-github text-3xl"></i>
-					</a>
-					<a href="https://it.linkedin.com/in/claudio-accolito-420766a7"
-						class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
-						<i class="fab fa-linkedin text-3xl"></i>
-					</a>
-					<a href="https://x.com/ClaudioAccolito"
-						class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
-						<i class="fab fa-twitter text-3xl"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Footer -->
-	<footer class="py-8 bg-gray-900 text-white">
-		<div class="container mx-auto px-6 text-center">
-			<p>© 2024 Developed with <i class="fas fa-heart text-red-500"></i> by Claudio Accolito</p>
-		</div>
-	</footer>
 </body>
 
 </html>

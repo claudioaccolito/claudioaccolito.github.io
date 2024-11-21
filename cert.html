@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .certifications {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        a {
+            text-decoration: none;
+            color: steelblue;
+        }
+        a:hover {
+            color: #0e4b7d;
+        }
+        .certification-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            text-decoration: none;
+        }
+        .certification-item:hover {
+            cursor: pointer;
+            background-color: #eee;
+        }
+
+        .certification-left {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .pdf-preview {
+            width: 50px;
+            /* Larghezza iniziale */
+            aspect-ratio: auto 4 / 3;
+            /* Mantiene il rapporto 1:1 per il quadrato */
+            margin-right: 15px;
+            border: none;
+            /* Nessun bordo attorno all'anteprima */
+            object-fit: cover;
+            /* Adatta il contenuto all'interno del quadrato */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="certifications">
+        <h2>Certifications</h2>
+        <div id="certification-list"></div>
+    </div>
+
+    <script>
+        // Array di certificazioni
+        const certifications = [
+            {
+                name: "CKAD - Corso Vega Training",
+                file: "pdf/CKAD - corso vega training.pdf"
+            },
+            {
+                name: "Docker and Containers: The Big Picture",
+                file: "pdf/certificate - Docker and Containers The Big Picture.pdf"
+            },
+            {
+                name: "Practical Python",
+                file: "pdf/certificate - Practical Python.pdf"
+            },
+            {
+                name: "Apache Kafka",
+                file: "pdf/certificate - Apache Kafka.pdf"
+            },
+            {
+                name: "React",
+                file: "pdf/certificate - React.pdf"
+            },
+            {
+                name: "Building Applications with React and Redux",
+                file: "pdf/certificate - Building Applications with React and Redux.pdf"
+            },
+            {
+                name: "Spring Boot: Efficient Development",
+                file: "pdf/certificate - Spring Boot Efficient Development.pdf"
+            },
+            {
+                name: "Building Mobile Apps with Ionic, Angular, and TypeScript",
+                file: "pdf/certificate - Building Mobile Apps with Ionic, Angular, and typescript.pdf"
+            },
+            {
+                name: "Spring Fundamentals",
+                file: "pdf/certificate - Spring Fundamentals.pdf"
+            },
+            {
+                name: "Creating Your First Spring Boot Application",
+                file: "pdf/certificate - Creating Your First Spring Boot Application.pdf"
+            },
+            {
+                name: "Testing JavaScript for Node.js with Mocha",
+                file: "pdf/certificate - Testing JavaScript for Node.js with Mocha.pdf"
+            },
+            {
+                name: "D3: The Big Picture",
+                file: "pdf/certificate - D3 The Big Picture.pdf"
+            },
+            {
+                name: "RedHat - Certificate of Attendance (DO101-4.2)",
+                file: "pdf/RedHat - Certificate of Attendance (DO101-4.2).pdf"
+            },
+            {
+                name: "Certificazione PRODUCT EXPERT NTW&SRV - Planning Basic",
+                file: "pdf/certificazione PRODUCT EXPERT NTW&SRV. PLANNING BASIC.pdf"
+            }
+        ];
+
+        // Funzione per generare la lista di certificazioni
+        const certificationList = document.getElementById("certification-list");
+        certifications.forEach(cert => {
+            const item = document.createElement("div");
+
+            item.innerHTML = `
+            <a href="${cert.file}" class="download-btn" download>
+                <div class="certification-item">
+                    <div class="certification-left">
+                        <object data="${cert.file}" type="application/pdf" class="pdf-preview"></object>
+                        <div>
+                            <strong>${cert.name}</strong>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            `;
+
+            certificationList.appendChild(item);
+        });
+    </script>
+</body>
+
+</html>
