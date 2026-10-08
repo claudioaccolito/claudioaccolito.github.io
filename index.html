@@ -1,73 +1,87 @@
 <!DOCTYPE html>
-<html lang="it" class="scroll-smooth">
+<html lang="it">
 
 <head>
-	<!-- Google Analytics -->
-	<script>
-		window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
-		ga('create', 'UA-XXXXX-Y', 'auto');
-		ga('send', 'pageview');
-	</script>
-	<script async src='https://www.google-analytics.com/analytics.js'></script>
-	<!-- End Google Analytics -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="description" content="Claudio Accolito is a Web Developer, Web Designer and Coder." />
-	<meta name="keywords"
-		content="claudio accolito, accolito, accolito claudio,, claudioaccolito, accolitoclaudio, frontend developer, web designer, developer" />
-	<meta name="google-site-verification" content="vxU1F9fQHNrVIDoXHdnfFxER_dauEcdkkHSSJ95WLAw" />
-	<link rel="shortcut icon" href="favicon.ico" />
-	<link rel="stylesheet" href="css/stile.css">
+	<meta name="description" content="Claudio Accolito">
+	<meta name="google-site-verification" content="vxU1F9fQHNrVIDoXHdnfFxER_dauEcdkkHSSJ95WLAw">
+	<meta name="theme-color" content="#070a1c">
 	<title>Claudio Accolito</title>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-	<script src="js/script.js"></script>
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+	<link rel="alternate icon" href="favicon.ico">
+	<link rel="preload" href="fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/home.css">
+	<script src="js/sky.js" defer></script>
 </head>
 
-<body class="transition-colors duration-300">
+<body class="home">
 
-	<!-- Hero Section -->
-	<section id="home"
-		class="min-h-screen flex items-center justify-center pt-20 py-8 bg-gray-900 duration-300">
-		<div class="container mx-auto text-center animate-fade-in">
-			<div class="max-w-3xl mx-auto">
-				<h2 class="fadeIn text-6xl font-bold mb-6">
-					<span class="gradient-text block mt-2 bottom-space">Claudio Accolito</span>
-					<!-- <span class="big-bottom-space"></span> -->
-				</h2>
-				<p class="fadeIn text-xl text-gray-200 dark:text-gray-300 mb-8 animate-float">
-					Senior Frontend Developer
-				</p>
-				<div class="flex justify-center space-x-4">
-					<!-- <a href="#me"
-						class="fadeIn px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition animate-glow">
-						Claudio who?
-					</a> -->
-					<!-- <a href="#contact"
-						class="fadeIn px-8 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition">
-						Contact me
-					</a> -->
-					<div class="max-w-2xl mx-auto">
-						<div class="flex justify-center space-x-6">
-							<a href="https://github.com/claudioaccolito"
-								class="text-gray-200 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
-								<i class="fab fa-github text-3xl"></i>
-							</a>
-							<a href="https://it.linkedin.com/in/claudio-accolito-420766a7"
-								class="text-gray-200 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
-								<i class="fab fa-linkedin text-3xl"></i>
-							</a>
-							<a href="https://x.com/ClaudioAccolito"
-								class="text-gray-200 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
-								<i class="fab fa-twitter text-3xl"></i>
-							</a>
-						</div>
-					</div>
-				</div>
+	<!-- Il cielo: fisso dietro la pagina, cambia con lo scroll -->
+	<div class="sky" aria-hidden="true">
+		<div class="sun-glow"></div>
+		<canvas class="stars"></canvas>
+		<div class="sun"></div>
+		<div class="moon"></div>
+		<svg class="ridge ridge-far" viewBox="0 0 1200 400" preserveAspectRatio="none"><path /></svg>
+		<svg class="ridge ridge-mid" viewBox="0 0 1200 400" preserveAspectRatio="none"><path /></svg>
+		<svg class="ridge ridge-near" viewBox="0 0 1200 400" preserveAspectRatio="none"><path /></svg>
+		<div class="grain"></div>
+	</div>
+
+	<div class="hud" aria-hidden="true">
+		<span class="clock">04:30</span>
+		<span class="track"><span class="track-fill"></span></span>
+	</div>
+
+	<main>
+		<section class="scene hero">
+			<h1 class="name"><span>Claudio</span> <em>Accolito</em></h1>
+			<p class="hint">scorri</p>
+		</section>
+
+		<section class="scene">
+			<p class="line reveal">Tutto comincia da <em>un punto</em> di luce.</p>
+		</section>
+
+		<section class="scene">
+			<p class="line reveal">Poi la luce sale,<br>e disegna <em>le forme</em>.</p>
+		</section>
+
+		<section class="scene">
+			<p class="line reveal">Per un po’, tutto sembra <em>chiaro</em>.</p>
+		</section>
+
+		<section class="scene">
+			<p class="line reveal">Le ombre si allungano.<br>Le cose prendono <em>colore</em>.</p>
+		</section>
+
+		<section class="scene">
+			<p class="line reveal">Poi il giorno <em>si ritira</em>,</p>
+		</section>
+
+		<section class="scene">
+			<p class="line reveal">e si accendono <em>le altre luci</em>.</p>
+		</section>
+
+		<section class="scene finale">
+			<div class="finale-copy">
+				<p class="line reveal"><em>Uniscile.</em></p>
+				<p class="whisper" data-default="Tocca una stella, poi un’altra. Resteranno qui, per la prossima volta.">Tocca una stella, poi un’altra. Resteranno qui, per la prossima volta.</p>
+				<button class="clear" type="button" hidden>Cancella</button>
 			</div>
-		</div>
-	</section>
+
+			<footer class="foot">
+				<span class="signature">Claudio Accolito</span>
+				<nav>
+					<a href="now/">Adesso&nbsp;→</a>
+					<button class="again" type="button">Ricomincia&nbsp;↑</button>
+				</nav>
+			</footer>
+		</section>
+	</main>
+
 </body>
 
 </html>
