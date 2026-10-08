@@ -208,11 +208,9 @@
   let moonSize = 0;
   let scene = null;
   let wins = [];
-  let winMx = 0;
 
   // Posizione delle finestre sullo schermo, per farle riflettere nel mare
   function cacheWindows() {
-    winMx = pointer.mx;
     wins = winEls.map((el) => {
       const r = el.getBoundingClientRect();
       return { x: r.left + r.width / 2, w: Math.max(2, r.width), t: parseFloat(el.style.getPropertyValue("--t")) };
@@ -279,7 +277,7 @@
   let p = -1;
   let starAlpha = 1;
   let interactive = false;
-  const pointer = { x: -1e4, y: -1e4, tx: 0, ty: 0, mx: 0, my: 0 };
+  const pointer = { x: -1e4, y: -1e4, tx: 0, mx: 0 };
   const shooting = [];
   let nextShoot = performance.now() + 3000;
   const themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -525,7 +523,6 @@
 
     // Le finestre accese si riflettono in scie tremolanti
     if (scene.lights > 0.01) {
-      const dx = (pointer.mx - winMx) * -32;
       sctx.fillStyle = "rgb(255 205 130)";
       wins.forEach((w, i) => {
         const on = lightOn(w.t, scene.lights);
@@ -533,7 +530,7 @@
         for (let r = 0; r < 5; r++) {
           sctx.globalAlpha = on * 0.45 * (1 - r / 5);
           const len = w.w * (1.4 + r * 0.5);
-          sctx.fillRect(w.x + dx + Math.sin(time * 2 + r + i) * 2 - len / 2, 2 + r * 4, len, 1.2);
+          sctx.fillRect(w.x + Math.sin(time * 2 + r + i) * 2 - len / 2, 2 + r * 4, len, 1.2);
         }
       });
     }
@@ -546,11 +543,9 @@
     const next = reduceMotion ? target : p < 0 ? target : p + (target - p) * 0.12;
     const settled = Math.abs(next - p) < 0.00005;
 
-    if (Math.abs(pointer.tx - pointer.mx) + Math.abs(pointer.ty - pointer.my) > 0.001) {
+    if (Math.abs(pointer.tx - pointer.mx) > 0.001) {
       pointer.mx += (pointer.tx - pointer.mx) * 0.05;
-      pointer.my += (pointer.ty - pointer.my) * 0.05;
       body.style.setProperty("--mx", pointer.mx.toFixed(3));
-      body.style.setProperty("--my", pointer.my.toFixed(3));
     }
 
     if (!settled) {
@@ -579,7 +574,6 @@
       pointer.y = e.clientY;
       if (!reduceMotion && e.pointerType === "mouse") {
         pointer.tx = (e.clientX / innerWidth) * 2 - 1;
-        pointer.ty = (e.clientY / innerHeight) * 2 - 1;
       }
       hovered = interactive ? nearestStar(e.clientX, e.clientY, 26) : -1;
       // La manina serve solo col mouse: al tocco farebbe evidenziare tutta la pagina

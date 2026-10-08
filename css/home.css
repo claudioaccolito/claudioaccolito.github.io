@@ -14,7 +14,6 @@
   --sun: 0;
   --moon: 0;
   --mx: 0;
-  --my: 0;
   --hint: 1;
   --lights: 0;
   --sea: 19vh;
@@ -106,19 +105,16 @@
   will-change: transform;
 }
 
+/* Col mouse si spostano appena, in orizzontale, solo le montagne lontane:
+   la costa e il paesino restano ancorati al mare */
 .ridge-far {
   height: 30vh;
-  transform: translate3d(calc(var(--mx) * -8px), calc(var(--my) * -3px), 0);
+  transform: translate3d(calc(var(--mx) * -6px), 0, 0);
 }
 
 .ridge-mid {
   height: 22vh;
-  transform: translate3d(calc(var(--mx) * -18px), calc(var(--my) * -6px), 0);
-}
-
-.ridge-near,
-.village {
-  transform: translate3d(calc(var(--mx) * -32px), calc(var(--my) * -10px), 0);
+  transform: translate3d(calc(var(--mx) * -12px), 0, 0);
 }
 
 .ridge-near {
