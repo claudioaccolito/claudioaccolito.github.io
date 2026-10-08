@@ -124,7 +124,7 @@
   if (name) {
     name.setAttribute("aria-label", name.textContent.replace(/\s+/g, " ").trim());
     let i = 0;
-    name.querySelectorAll("span, em").forEach((part) => {
+    name.querySelectorAll(":scope > span").forEach((part) => {
       const text = part.textContent;
       part.textContent = "";
       part.setAttribute("aria-hidden", "true");
@@ -217,7 +217,7 @@
     if (!whisper) return;
     const n = edges.length;
     whisper.textContent =
-      n === 0 ? whisper.dataset.default : n < 3 ? "Ancora. Ogni linea ne chiama un’altra." : "Ecco. Questa è tua.";
+      n === 0 ? whisper.dataset.default : n < 3 ? "Ancora: ogni linea ne chiama un’altra." : "Ecco il tuo segno. Resterà qui, ad aspettarti.";
     clearBtn.hidden = n === 0;
   }
 
@@ -280,7 +280,7 @@
     const q = smooth(0.74, 0.97, p);
     st.setProperty("--moon", smooth(0.74, 0.84, p).toFixed(3));
     st.setProperty("--moon-x", `${(lerp(0.88, 0.76, q) * W).toFixed(1)}px`);
-    st.setProperty("--moon-y", `${(lerp(0.6, 0.16, q) * H).toFixed(1)}px`);
+    st.setProperty("--moon-y", `${(lerp(0.6, W < 640 ? 0.36 : 0.16, q) * H).toFixed(1)}px`);
 
     // Testo scuro quando il cielo è chiaro
     const day = smooth(0.2, 0.3, p) * (1 - smooth(0.58, 0.66, p));

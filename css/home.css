@@ -164,12 +164,13 @@ main {
 }
 
 .line {
-  max-width: 17ch;
+  max-width: 30ch;
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(2rem, 5.4vw, 4.4rem);
+  font-size: clamp(1.45rem, 3.3vw, 2.9rem);
   font-weight: 300;
-  line-height: 1.12;
+  line-height: 1.32;
+  text-wrap: balance;
   letter-spacing: -0.015em;
   font-variation-settings: "opsz" 144;
   text-shadow: 0 1px 30px rgb(0 0 0 / var(--shade));
@@ -189,7 +190,7 @@ main {
     opacity 1s ease,
     filter 1.2s ease,
     transform 1.2s cubic-bezier(0.2, 0.7, 0.1, 1);
-  transition-delay: calc(var(--i) * 80ms);
+  transition-delay: calc(var(--i) * 55ms);
 }
 
 .reveal.in .w {
@@ -209,10 +210,6 @@ main {
   letter-spacing: -0.035em;
   font-variation-settings: "opsz" 144;
   text-shadow: 0 2px 40px rgb(0 0 0 / 0.35);
-}
-
-.name em {
-  font-weight: 250;
 }
 
 .name .ch {
@@ -336,7 +333,6 @@ main {
 
 .signature {
   font-family: var(--serif);
-  font-style: italic;
   font-weight: 300;
   font-size: 1.15rem;
 }
