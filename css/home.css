@@ -279,7 +279,8 @@ main {
   min-height: 100svh;
 }
 
-.finale-copy {
+.finale-copy,
+.finale-note {
   display: grid;
   justify-items: center;
   gap: 1rem;
