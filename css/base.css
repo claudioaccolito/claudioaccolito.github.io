@@ -78,7 +78,7 @@ button {
   background: rgba(246, 194, 122, 0.35);
 }
 
-/* ---------- Pagine semplici (now, 404) ---------- */
+/* ---------- Pagina 404 ---------- */
 
 .page {
   min-height: 100vh;
@@ -144,54 +144,4 @@ button {
   margin: 1.25rem 0 0;
   font-size: 0.85rem;
   color: var(--muted);
-}
-
-.now-list {
-  margin: clamp(3rem, 10vh, 5rem) 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.now-list > li {
-  display: grid;
-  grid-template-columns: 9rem 1fr;
-  gap: 1rem;
-  padding: 1.5rem 0;
-  border-top: 1px solid rgba(243, 239, 230, 0.12);
-}
-
-.now-list h2 {
-  margin: 0;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding-top: 0.35rem;
-}
-
-.now-list p {
-  margin: 0;
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  font-weight: 350;
-  line-height: 1.45;
-}
-
-.now-list .empty {
-  font-style: italic;
-  color: var(--muted);
-}
-
-.page-note {
-  margin-top: 4rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-@media (max-width: 34rem) {
-  .now-list > li {
-    grid-template-columns: 1fr;
-    gap: 0.4rem;
-  }
 }

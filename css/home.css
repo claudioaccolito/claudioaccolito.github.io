@@ -281,13 +281,20 @@ main {
   min-height: 100vh;
   min-height: 100svh;
   align-content: start;
-  padding-top: 12vh;
+  padding-top: 14vh;
 }
 
 .finale-copy {
   display: grid;
   justify-items: center;
   gap: 1rem;
+}
+
+.invite {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgb(var(--ink-rgb) / 0.95);
 }
 
 .whisper {
