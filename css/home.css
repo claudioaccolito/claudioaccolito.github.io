@@ -165,16 +165,6 @@
   pointer-events: none;
 }
 
-.clock {
-  position: absolute;
-  left: clamp(1rem, 3vw, 2rem);
-  bottom: clamp(1rem, 3vw, 1.75rem);
-  font-size: 0.75rem;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.22em;
-  color: rgb(var(--ink-rgb) / 0.7);
-}
-
 .track {
   position: absolute;
   right: clamp(1rem, 3vw, 2rem);
@@ -407,15 +397,6 @@ main {
 .foot nav {
   display: flex;
   gap: 2rem;
-}
-
-/* A fine pagina l'orologio lascia spazio al footer */
-.home.at-end .clock {
-  opacity: 0;
-}
-
-.clock {
-  transition: opacity 0.4s;
 }
 
 @media (max-width: 40rem) {
