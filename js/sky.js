@@ -177,7 +177,10 @@
   }
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const d = Math.min(window.devicePixelRatio || 1, 2);
+    // La barra del browser su mobile genera resize senza cambiare il cielo
+    if (canvas.clientWidth === W && canvas.clientHeight === H && d === dpr) return;
+    dpr = d;
     W = canvas.clientWidth;
     H = canvas.clientHeight;
     canvas.width = Math.round(W * dpr);

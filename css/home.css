@@ -23,9 +23,18 @@
 
 /* ---------- Cielo ---------- */
 
+/*
+ * Alto quanto lo schermo più grande possibile (lvh): su mobile, quando la
+ * barra del browser si nasconde scorrendo, il cielo copre già tutto e non
+ * deve ridimensionarsi.
+ */
 .sky {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  height: 100lvh;
   z-index: 0;
   overflow: hidden;
   background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-bottom) 85%);
