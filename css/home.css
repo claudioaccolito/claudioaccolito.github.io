@@ -16,9 +16,17 @@
   --mx: 0;
   --my: 0;
   --hint: 1;
+  --lights: 0;
+  --sea: 19vh;
   color: rgb(var(--ink-rgb));
   background: var(--sky-top);
   overflow-x: hidden;
+}
+
+@supports (height: 1lvh) {
+  .home {
+    --sea: 19lvh;
+  }
 }
 
 /* ---------- Cielo ---------- */
@@ -87,28 +95,61 @@
   opacity: var(--moon);
 }
 
+/* Le montagne poggiano sull'orizzonte del mare e proseguono sotto l'acqua */
 .ridge {
   position: absolute;
   left: -5%;
-  bottom: 0;
+  bottom: var(--sea);
   width: 110%;
   display: block;
+  overflow: visible;
   will-change: transform;
 }
 
 .ridge-far {
-  height: 50vh;
-  transform: translate3d(calc(var(--mx) * -8px), calc(var(--p) * 2vh + var(--my) * -3px), 0);
+  height: 30vh;
+  transform: translate3d(calc(var(--mx) * -8px), calc(var(--my) * -3px), 0);
 }
 
 .ridge-mid {
-  height: 38vh;
-  transform: translate3d(calc(var(--mx) * -18px), calc(var(--p) * 4vh + var(--my) * -6px), 0);
+  height: 22vh;
+  transform: translate3d(calc(var(--mx) * -18px), calc(var(--my) * -6px), 0);
+}
+
+.ridge-near,
+.village {
+  transform: translate3d(calc(var(--mx) * -32px), calc(var(--my) * -10px), 0);
 }
 
 .ridge-near {
-  height: 26vh;
-  transform: translate3d(calc(var(--mx) * -32px), calc(var(--p) * 6vh + var(--my) * -10px), 0);
+  height: 14vh;
+}
+
+/* Il paesino sulla costa: le finestre si accendono la sera */
+.village {
+  position: absolute;
+  left: 9%;
+  bottom: calc(var(--sea) - 2px);
+  width: clamp(150px, 18vw, 270px);
+  aspect-ratio: 240 / 70;
+  overflow: visible;
+}
+
+.village .win {
+  fill: #ffd28a;
+  opacity: clamp(0, calc((var(--lights) - var(--t)) * 12), 1);
+}
+
+.village .wins {
+  filter: drop-shadow(0 0 3px rgba(255, 196, 120, 0.9));
+}
+
+.sea {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--sea);
 }
 
 .grain {
