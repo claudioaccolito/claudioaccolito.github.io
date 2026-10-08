@@ -1,18 +1,18 @@
 /* Font ospitati in locale (SIL OFL, vedi fonts/OFL.txt) */
 @font-face {
-  font-family: "Fraunces";
+  font-family: "Literata";
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 200 900;
   font-display: swap;
-  src: url("../fonts/fraunces.woff2") format("woff2");
+  src: url("../fonts/literata.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Fraunces";
+  font-family: "Literata";
   font-style: italic;
-  font-weight: 100 900;
+  font-weight: 200 900;
   font-display: swap;
-  src: url("../fonts/fraunces-italic.woff2") format("woff2");
+  src: url("../fonts/literata-italic.woff2") format("woff2");
 }
 
 @font-face {
@@ -24,7 +24,7 @@
 }
 
 :root {
-  --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --serif: "Literata", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --night: #070a1c;
   --ink: #f3efe6;
@@ -130,10 +130,9 @@ button {
   margin: 0;
   font-family: var(--serif);
   font-weight: 300;
-  font-size: clamp(2.6rem, 8vw, 4.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 144;
+  font-size: clamp(2.2rem, 6.5vw, 3.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
 }
 
 .page h1 em {

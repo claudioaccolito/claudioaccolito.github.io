@@ -164,20 +164,19 @@ main {
 }
 
 .line {
-  max-width: 30ch;
+  max-width: 34ch;
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(1.45rem, 3.3vw, 2.9rem);
-  font-weight: 300;
-  line-height: 1.32;
+  font-size: clamp(1.2rem, 2.5vw, 2.05rem);
+  font-weight: 350;
+  line-height: 1.5;
   text-wrap: balance;
-  letter-spacing: -0.015em;
-  font-variation-settings: "opsz" 144;
+  letter-spacing: -0.005em;
   text-shadow: 0 1px 30px rgb(0 0 0 / var(--shade));
 }
 
 .line em {
-  font-weight: 300;
+  font-weight: 350;
 }
 
 /* Parole che emergono dalla nebbia */
@@ -204,11 +203,10 @@ main {
 .name {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(3.2rem, 12.5vw, 10.5rem);
-  font-weight: 250;
-  line-height: 0.95;
-  letter-spacing: -0.035em;
-  font-variation-settings: "opsz" 144;
+  font-size: clamp(2.3rem, 7.5vw, 5.6rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   text-shadow: 0 2px 40px rgb(0 0 0 / 0.35);
 }
 
