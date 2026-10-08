@@ -76,13 +76,13 @@
         (r() - 0.5) * 0.07 * rough;
       pts.push([x, base - n * amp]);
     }
-    let d = `M0,400 L0,${pts[0][1].toFixed(1)}`;
+    let d = `M0,600 L0,${pts[0][1].toFixed(1)}`;
     for (let i = 1; i < pts.length - 1; i++) {
       const xc = (pts[i][0] + pts[i + 1][0]) / 2;
       const yc = (pts[i][1] + pts[i + 1][1]) / 2;
       d += ` Q${pts[i][0]},${pts[i][1].toFixed(1)} ${xc},${yc.toFixed(1)}`;
     }
-    return d + ` L1200,${pts[pts.length - 1][1].toFixed(1)} L1200,400 Z`;
+    return d + ` L1200,${pts[pts.length - 1][1].toFixed(1)} L1200,600 Z`;
   }
 
   ridges.forEach((r) => r.el && r.el.setAttribute("d", ridgePath(r)));
@@ -177,13 +177,47 @@
   }
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const d = Math.min(window.devicePixelRatio || 1, 2);
+    // La barra del browser su mobile genera resize senza cambiare il cielo
+    if (canvas.clientWidth === W && canvas.clientHeight === H && d === dpr) return;
+    dpr = d;
     W = canvas.clientWidth;
     H = canvas.clientHeight;
     canvas.width = Math.round(W * dpr);
     canvas.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    SW = sea.clientWidth;
+    SH = sea.clientHeight;
+    sea.width = Math.round(SW * dpr);
+    sea.height = Math.round(SH * dpr);
+    sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    moonSize = moonEl.clientWidth;
+    cacheWindows();
   }
+
+  /* ---------- Mare e paesino ---------- */
+
+  const sea = document.querySelector(".sea");
+  const sctx = sea.getContext("2d");
+  const moonEl = document.querySelector(".moon");
+  const houses = document.querySelector(".village .houses");
+  const winEls = [...document.querySelectorAll(".village .win")];
+  let SW = 0;
+  let SH = 0;
+  let moonSize = 0;
+  let scene = null;
+  let wins = [];
+
+  // Posizione delle finestre sullo schermo, per farle riflettere nel mare
+  function cacheWindows() {
+    wins = winEls.map((el) => {
+      const r = el.getBoundingClientRect();
+      return { x: r.left + r.width / 2, w: Math.max(2, r.width), t: parseFloat(el.style.getPropertyValue("--t")) };
+    });
+  }
+
+  const lightOn = (t, lights) => clamp((lights - t) * 12);
 
   /* ---------- Costellazione ---------- */
 
@@ -243,7 +277,7 @@
   let p = -1;
   let starAlpha = 1;
   let interactive = false;
-  const pointer = { x: -1e4, y: -1e4, tx: 0, ty: 0, mx: 0, my: 0 };
+  const pointer = { x: -1e4, y: -1e4, tx: 0, mx: 0 };
   const shooting = [];
   let nextShoot = performance.now() + 3000;
   const themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -262,25 +296,42 @@
     st.setProperty("--sky-bottom", rgb(bottom));
 
     ridges.forEach((r) => r.el && (r.el.style.fill = rgb(mix(bottom, shade, r.depth))));
+    if (houses) houses.style.fill = rgb(mix(bottom, shade, 0.97));
 
     // Sole: sorge dietro le colline a sinistra, tramonta nella valle al centro
     const t = (p - 0.09) / (0.76 - 0.09);
     const elev = Math.sin(Math.PI * clamp(t));
-    const horizon = 0.95 * H;
+    const seaLine = H - SH;
+    const horizon = seaLine + 0.07 * H;
     const sx = lerp(0.12, 0.6, clamp(t)) * W;
     const sy = horizon - elev * (horizon - 0.15 * H);
     const visible = t > -0.02 && t < 1.02 ? 1 : 0;
     st.setProperty("--sx", `${sx.toFixed(1)}px`);
     st.setProperty("--sy", `${sy.toFixed(1)}px`);
     st.setProperty("--sun", visible);
-    st.setProperty("--sun-rgb", channels(mix(hex("#ff7a45"), hex("#fff4d6"), smooth(0, 0.65, elev))));
+    const sunRGB = channels(mix(hex("#ff7a45"), hex("#fff4d6"), smooth(0, 0.65, elev)));
+    st.setProperty("--sun-rgb", sunRGB);
     st.setProperty("--glow", (visible * lerp(1, 0.4, elev)).toFixed(3));
 
     // Luna
     const q = smooth(0.74, 0.97, p);
-    st.setProperty("--moon", smooth(0.74, 0.84, p).toFixed(3));
-    st.setProperty("--moon-x", `${(lerp(0.88, 0.76, q) * W).toFixed(1)}px`);
-    st.setProperty("--moon-y", `${((W < 640 ? lerp(0.41, 0.36, q) : lerp(0.6, 0.16, q)) * H).toFixed(1)}px`);
+    const moonA = smooth(0.74, 0.84, p);
+    const moonX = lerp(0.88, 0.76, q) * W;
+    const moonY = (W < 640 ? lerp(0.41, 0.36, q) : lerp(0.6, 0.16, q)) * H;
+    st.setProperty("--moon", moonA.toFixed(3));
+    st.setProperty("--moon-x", `${moonX.toFixed(1)}px`);
+    st.setProperty("--moon-y", `${moonY.toFixed(1)}px`);
+
+    // Luci del paesino: qualcuna all'alba, tutte la sera, metà a notte fonda
+    const lights = Math.max(0.45 * (1 - smooth(0.06, 0.15, p)), smooth(0.58, 0.72, p) - 0.55 * smooth(0.93, 1, p));
+    st.setProperty("--lights", lights.toFixed(3));
+
+    scene = {
+      top, mid, bottom, sx, sunRGB, elev,
+      sun: visible * smooth(0, 0.06 * H, seaLine - sy) * lerp(0.95, 0.55, elev),
+      glow: visible * smooth(-0.04 * H, 0.08 * H, seaLine - sy) * lerp(1, 0.35, elev),
+      moonX: moonX + moonSize / 2, moonA, lights,
+    };
 
     // Testo scuro quando il cielo è chiaro
     const day = smooth(0.2, 0.3, p) * (1 - smooth(0.58, 0.66, p));
@@ -399,16 +450,102 @@
     ctx.globalAlpha = 1;
   }
 
+  // Una colonna di riflessi tremolanti sotto il sole o la luna
+  function glitter(x, color, alpha, spread, time) {
+    // Prima una colonna di luce morbida, poi i riflessi sulle onde
+    const col = sctx.createLinearGradient(0, 0, 0, SH);
+    col.addColorStop(0, color.replace(")", " / 0.5)"));
+    col.addColorStop(1, color.replace(")", " / 0)"));
+    sctx.globalAlpha = alpha * 0.45;
+    sctx.fillStyle = col;
+    sctx.beginPath();
+    sctx.moveTo(x - spread * 0.15, 0);
+    sctx.lineTo(x + spread * 0.15, 0);
+    sctx.lineTo(x + spread * 0.7, SH);
+    sctx.lineTo(x - spread * 0.7, SH);
+    sctx.fill();
+
+    sctx.fillStyle = color;
+    for (let y = 1; y < SH; y += 3) {
+      const t = y / SH;
+      for (let k = 0; k < 2; k++) {
+        const n = Math.sin(y * 0.71 + time * 1.6 + k * 2.3) * Math.cos(y * 0.23 - time * 0.9 + k * 1.1);
+        const len = (2 + 22 * t) * (0.4 + 0.6 * Math.abs(Math.sin(y * 1.9 + time * 2.6 + k)));
+        sctx.globalAlpha = alpha * 0.85 * (1 - t * 0.55) * (0.25 + 0.75 * Math.abs(n));
+        sctx.fillRect(x + n * spread * (0.25 + t) - len / 2, y, len, 0.8 + t);
+      }
+    }
+  }
+
+  function drawSea(now) {
+    if (!scene || !SH) return;
+    const time = reduceMotion ? 0 : now / 1000;
+    const { top, mid, bottom } = scene;
+
+    // L'acqua riflette il cielo: chiara all'orizzonte, più scura verso di noi
+    sctx.globalAlpha = 1;
+    const g = sctx.createLinearGradient(0, 0, 0, SH);
+    g.addColorStop(0, rgb(mix(mix(bottom, mid, 0.35), [0, 0, 0], 0.12)));
+    g.addColorStop(1, rgb(mix(top, [0, 0, 0], 0.35)));
+    sctx.fillStyle = g;
+    sctx.fillRect(0, 0, SW, SH);
+
+    // Bagliore del sole basso sull'acqua
+    if (scene.glow > 0.01) {
+      const rg = sctx.createRadialGradient(scene.sx, 0, 0, scene.sx, 0, SW * 0.4);
+      rg.addColorStop(0, `rgb(${scene.sunRGB} / ${(0.4 * scene.glow).toFixed(3)})`);
+      rg.addColorStop(1, `rgb(${scene.sunRGB} / 0)`);
+      sctx.fillStyle = rg;
+      sctx.fillRect(0, 0, SW, SH);
+    }
+
+    // Linea dell'orizzonte
+    sctx.globalAlpha = 0.3;
+    sctx.fillStyle = rgb(mix(bottom, [255, 255, 255], 0.4));
+    sctx.fillRect(0, 0, SW, 1);
+
+    // Onde: tratti sottili, più fitti e corti verso l'orizzonte
+    sctx.fillStyle = rgb(mix(mid, [255, 255, 255], 0.3));
+    for (let i = 1; i <= 16; i++) {
+      const t = i / 16;
+      const y = SH * t ** 1.7;
+      const step = 60 * (0.6 + t);
+      for (let x = ((time * 10 * (0.5 + t)) % step) - step; x < SW; x += step) {
+        const a = 0.5 + 0.5 * Math.sin(x * 0.05 + i * 1.7 + time * 0.8);
+        if (a < 0.55) continue;
+        sctx.globalAlpha = (a - 0.55) * 0.4 * (0.4 + t);
+        sctx.fillRect(x, y, 14 + 30 * t, 1);
+      }
+    }
+
+    if (scene.sun > 0.01) glitter(scene.sx, `rgb(${scene.sunRGB})`, scene.sun, lerp(70, 30, scene.elev), time);
+    if (scene.moonA > 0.01) glitter(scene.moonX, "rgb(236 232 220)", scene.moonA * 0.5, 16, time);
+
+    // Le finestre accese si riflettono in scie tremolanti
+    if (scene.lights > 0.01) {
+      sctx.fillStyle = "rgb(255 205 130)";
+      wins.forEach((w, i) => {
+        const on = lightOn(w.t, scene.lights);
+        if (!on) return;
+        for (let r = 0; r < 5; r++) {
+          sctx.globalAlpha = on * 0.45 * (1 - r / 5);
+          const len = w.w * (1.4 + r * 0.5);
+          sctx.fillRect(w.x + Math.sin(time * 2 + r + i) * 2 - len / 2, 2 + r * 4, len, 1.2);
+        }
+      });
+    }
+
+    sctx.globalAlpha = 1;
+  }
+
   function frame(now) {
     // Lo scroll viene seguito con un filo di inerzia
     const next = reduceMotion ? target : p < 0 ? target : p + (target - p) * 0.12;
     const settled = Math.abs(next - p) < 0.00005;
 
-    if (Math.abs(pointer.tx - pointer.mx) + Math.abs(pointer.ty - pointer.my) > 0.001) {
+    if (Math.abs(pointer.tx - pointer.mx) > 0.001) {
       pointer.mx += (pointer.tx - pointer.mx) * 0.05;
-      pointer.my += (pointer.ty - pointer.my) * 0.05;
       body.style.setProperty("--mx", pointer.mx.toFixed(3));
-      body.style.setProperty("--my", pointer.my.toFixed(3));
     }
 
     if (!settled) {
@@ -417,6 +554,7 @@
     }
 
     drawStars(now);
+    drawSea(now);
     requestAnimationFrame(frame);
   }
 
@@ -436,7 +574,6 @@
       pointer.y = e.clientY;
       if (!reduceMotion && e.pointerType === "mouse") {
         pointer.tx = (e.clientX / innerWidth) * 2 - 1;
-        pointer.ty = (e.clientY / innerHeight) * 2 - 1;
       }
       hovered = interactive ? nearestStar(e.clientX, e.clientY, 26) : -1;
       // La manina serve solo col mouse: al tocco farebbe evidenziare tutta la pagina

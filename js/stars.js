@@ -18,10 +18,16 @@
     a: 0.25 + rand() * 0.6,
   }));
 
+  let lastW = 0;
+  let lastH = 0;
+
   function draw() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const w = canvas.clientWidth;
     const h = canvas.clientHeight;
+    if (w === lastW && h === lastH) return;
+    lastW = w;
+    lastH = h;
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
