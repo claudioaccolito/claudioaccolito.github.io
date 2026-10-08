@@ -117,7 +117,7 @@
     (entries) => entries.forEach((e) => e.target.classList.toggle("in", e.isIntersecting)),
     { rootMargin: "-12% 0px -12% 0px", threshold: 0.6 }
   );
-  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  document.querySelectorAll(".reveal, .rise").forEach((el) => io.observe(el));
 
   // Il nome si compone lettera per lettera
   const name = document.querySelector(".name");
@@ -217,7 +217,7 @@
     if (!whisper) return;
     const n = edges.length;
     whisper.textContent =
-      n === 0 ? whisper.dataset.default : n < 3 ? "Ancora: ogni linea ne chiama un’altra." : "Ecco il tuo segno. Resterà qui, ad aspettarti.";
+      n === 0 ? whisper.dataset.default : n < 3 ? "Continua, il cielo è grande." : "Ecco il tuo segno. Resterà qui, ad aspettarti.";
     clearBtn.hidden = n === 0;
   }
 
