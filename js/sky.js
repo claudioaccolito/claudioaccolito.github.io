@@ -280,7 +280,7 @@
     const q = smooth(0.74, 0.97, p);
     st.setProperty("--moon", smooth(0.74, 0.84, p).toFixed(3));
     st.setProperty("--moon-x", `${(lerp(0.88, 0.76, q) * W).toFixed(1)}px`);
-    st.setProperty("--moon-y", `${(lerp(0.6, W < 640 ? 0.36 : 0.16, q) * H).toFixed(1)}px`);
+    st.setProperty("--moon-y", `${((W < 640 ? lerp(0.41, 0.36, q) : lerp(0.6, 0.16, q)) * H).toFixed(1)}px`);
 
     // Testo scuro quando il cielo è chiaro
     const day = smooth(0.2, 0.3, p) * (1 - smooth(0.58, 0.66, p));
