@@ -1,0 +1,146 @@
+/* Font ospitati in locale (SIL OFL, vedi fonts/OFL.txt) */
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/eb-garamond.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/eb-garamond-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter.woff2") format("woff2");
+}
+
+:root {
+  --serif: "EB Garamond", Garamond, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --night: #070a1c;
+  --ink: #f3efe6;
+  --muted: rgba(243, 239, 230, 0.6);
+  --accent: #f6c27a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: #070a1c;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: rgba(246, 194, 122, 0.35);
+}
+
+/* ---------- Pagina 404 ---------- */
+
+.page {
+  min-height: 100vh;
+  min-height: 100svh;
+  background:
+    radial-gradient(120% 70% at 50% 120%, #1d1a3f 0%, transparent 60%),
+    linear-gradient(to bottom, #02030d, #070b22 60%, #121633);
+  background-attachment: fixed;
+}
+
+.page .stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.page-wrap {
+  position: relative;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) 1.25rem 5rem;
+}
+
+.back {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.eyebrow {
+  margin: clamp(4rem, 14vh, 8rem) 0 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.page h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.page h1 em {
+  font-weight: 400;
+}
+
+.updated {
+  margin: 1.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}

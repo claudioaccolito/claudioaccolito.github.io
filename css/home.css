@@ -1,0 +1,405 @@
+/* ---------- Variabili aggiornate da js/sky.js a ogni scroll ---------- */
+
+.home {
+  --p: 0;
+  --sky-top: #070a1c;
+  --sky-mid: #141a3a;
+  --sky-bottom: #2a2550;
+  --ink-rgb: 243 239 230;
+  --shade: 0.35;
+  --sun-rgb: 255 170 120;
+  --sx: -20vmax;
+  --sy: 120vh;
+  --glow: 0;
+  --sun: 0;
+  --moon: 0;
+  --mx: 0;
+  --my: 0;
+  --hint: 1;
+  color: rgb(var(--ink-rgb));
+  background: var(--sky-top);
+  overflow-x: hidden;
+}
+
+/* ---------- Cielo ---------- */
+
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-bottom) 85%);
+  pointer-events: none;
+}
+
+.sun-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--sx) var(--sy), rgb(var(--sun-rgb) / 0.55) 0, rgb(var(--sun-rgb) / 0.18) 22vmax, transparent 55vmax);
+  opacity: var(--glow);
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sun {
+  --size: clamp(48px, 9vmin, 110px);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--size);
+  height: var(--size);
+  margin: calc(var(--size) / -2) 0 0 calc(var(--size) / -2);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #fffaf0 0, rgb(var(--sun-rgb)) 70%);
+  box-shadow:
+    0 0 40px 8px rgb(var(--sun-rgb) / 0.55),
+    0 0 140px 40px rgb(var(--sun-rgb) / 0.25);
+  transform: translate3d(var(--sx), var(--sy), 0);
+  opacity: var(--sun);
+  will-change: transform;
+}
+
+.moon {
+  --size: clamp(34px, 6vmin, 70px);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  box-shadow: inset calc(var(--size) * -0.26) calc(var(--size) * 0.08) 0 0 #f1ecdc;
+  filter: drop-shadow(0 0 14px rgba(241, 236, 220, 0.45));
+  transform: translate3d(var(--moon-x, 78vw), var(--moon-y, 20vh), 0) rotate(-18deg);
+  opacity: var(--moon);
+}
+
+.ridge {
+  position: absolute;
+  left: -5%;
+  bottom: 0;
+  width: 110%;
+  display: block;
+  will-change: transform;
+}
+
+.ridge-far {
+  height: 50vh;
+  transform: translate3d(calc(var(--mx) * -8px), calc(var(--p) * 2vh + var(--my) * -3px), 0);
+}
+
+.ridge-mid {
+  height: 38vh;
+  transform: translate3d(calc(var(--mx) * -18px), calc(var(--p) * 4vh + var(--my) * -6px), 0);
+}
+
+.ridge-near {
+  height: 26vh;
+  transform: translate3d(calc(var(--mx) * -32px), calc(var(--p) * 6vh + var(--my) * -10px), 0);
+}
+
+.grain {
+  position: absolute;
+  inset: -50%;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Indicatori ---------- */
+
+.hud {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.clock {
+  position: absolute;
+  left: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 1.75rem);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.22em;
+  color: rgb(var(--ink-rgb) / 0.7);
+}
+
+.track {
+  position: absolute;
+  right: clamp(1rem, 3vw, 2rem);
+  top: 35vh;
+  width: 1px;
+  height: 30vh;
+  background: rgb(var(--ink-rgb) / 0.18);
+}
+
+.track-fill {
+  position: absolute;
+  inset: 0;
+  background: rgb(var(--ink-rgb) / 0.85);
+  transform-origin: top;
+  transform: scaleY(var(--p));
+}
+
+/* ---------- Scene ---------- */
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.scene {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.line {
+  max-width: 34ch;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 2.9vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.45;
+  text-wrap: balance;
+  text-shadow: 0 1px 30px rgb(0 0 0 / var(--shade));
+}
+
+.line em {
+  font-weight: 400;
+}
+
+/* Parole che emergono dalla nebbia */
+.reveal .w {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(12px);
+  transform: translate3d(0, 0.4em, 0);
+  transition:
+    opacity 1s ease,
+    filter 1.2s ease,
+    transform 1.2s cubic-bezier(0.2, 0.7, 0.1, 1);
+  transition-delay: calc(var(--i) * 55ms);
+}
+
+.reveal.in .w {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+/* ---------- Hero ---------- */
+
+.name {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 8vw, 6.2rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 40px rgb(0 0 0 / 0.35);
+}
+
+.name .ch {
+  display: inline-block;
+  animation: rise 1.8s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+  animation-delay: calc(0.3s + var(--i) * 55ms);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    filter: blur(14px);
+    transform: translate3d(0, 0.35em, 0);
+  }
+}
+
+.hint {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.5rem, 6vh, 3rem);
+  margin: 0;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-transform: uppercase;
+  color: rgb(var(--ink-rgb) / 0.7);
+  opacity: var(--hint);
+  animation: fade-in 1.5s 2s both;
+}
+
+.hint::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 3rem;
+  margin: 0.9rem auto 0;
+  background: linear-gradient(to bottom, rgb(var(--ink-rgb) / 0.8), transparent);
+  transform-origin: top;
+  animation: drip 2.4s ease-in-out infinite;
+}
+
+@keyframes drip {
+  0% {
+    transform: scaleY(0);
+    opacity: 1;
+  }
+
+  60% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---------- Finale ---------- */
+
+.finale {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.finale-copy,
+.finale-note {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}
+
+/* Le istruzioni del finale arrivano dopo l'invito */
+.rise {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translate3d(0, 1.25rem, 0);
+  transition:
+    opacity 1.2s ease,
+    filter 1.4s ease,
+    transform 1.4s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+.rise.in {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+  transition-delay: 1.1s;
+}
+
+.invite {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgb(var(--ink-rgb) / 0.95);
+}
+
+.whisper {
+  max-width: 36ch;
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgb(var(--ink-rgb) / 0.65);
+  transition: opacity 0.6s;
+}
+
+.clear,
+.foot nav a,
+.foot nav button {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(var(--ink-rgb) / 0.65);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.clear:hover,
+.foot nav a:hover,
+.foot nav button:hover {
+  color: rgb(var(--ink-rgb));
+  border-color: currentColor;
+}
+
+.foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding: 1.5rem clamp(1rem, 3vw, 2rem) clamp(3rem, 6vh, 3.5rem);
+}
+
+.signature {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.15rem;
+}
+
+.foot nav {
+  display: flex;
+  gap: 2rem;
+}
+
+/* A fine pagina l'orologio lascia spazio al footer */
+.home.at-end .clock {
+  opacity: 0;
+}
+
+.clock {
+  transition: opacity 0.4s;
+}
+
+@media (max-width: 40rem) {
+  .track {
+    right: 0.6rem;
+  }
+
+  .foot {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal .w {
+    filter: none;
+    transform: none;
+    transition: opacity 0.6s ease;
+    transition-delay: 0s;
+  }
+
+  .rise {
+    filter: none;
+    transform: none;
+    transition: opacity 0.6s ease;
+  }
+
+  .name .ch,
+  .hint,
+  .hint::after {
+    animation: none;
+  }
+}
