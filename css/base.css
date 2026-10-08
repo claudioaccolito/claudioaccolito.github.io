@@ -1,18 +1,18 @@
 /* Font ospitati in locale (SIL OFL, vedi fonts/OFL.txt) */
 @font-face {
-  font-family: "Literata";
+  font-family: "EB Garamond";
   font-style: normal;
-  font-weight: 200 900;
+  font-weight: 400 800;
   font-display: swap;
-  src: url("../fonts/literata.woff2") format("woff2");
+  src: url("../fonts/eb-garamond.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Literata";
+  font-family: "EB Garamond";
   font-style: italic;
-  font-weight: 200 900;
+  font-weight: 400 800;
   font-display: swap;
-  src: url("../fonts/literata-italic.woff2") format("woff2");
+  src: url("../fonts/eb-garamond-italic.woff2") format("woff2");
 }
 
 @font-face {
@@ -24,7 +24,7 @@
 }
 
 :root {
-  --serif: "Literata", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --serif: "EB Garamond", Garamond, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --night: #070a1c;
   --ink: #f3efe6;
@@ -129,14 +129,14 @@ button {
 .page h1 {
   margin: 0;
   font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(2.2rem, 6.5vw, 3.6rem);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 7vw, 4rem);
   line-height: 1.1;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
 }
 
 .page h1 em {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .updated {
