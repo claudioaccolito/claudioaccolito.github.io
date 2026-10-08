@@ -41,6 +41,8 @@
 html {
   background: #070a1c;
   -webkit-text-size-adjust: 100%;
+  /* Niente lampo blu al tocco su Chrome Android */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {

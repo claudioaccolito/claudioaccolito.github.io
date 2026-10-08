@@ -439,7 +439,8 @@
         pointer.ty = (e.clientY / innerHeight) * 2 - 1;
       }
       hovered = interactive ? nearestStar(e.clientX, e.clientY, 26) : -1;
-      document.documentElement.style.cursor = hovered >= 0 ? "pointer" : "";
+      // La manina serve solo col mouse: al tocco farebbe evidenziare tutta la pagina
+      if (e.pointerType === "mouse") document.documentElement.style.cursor = hovered >= 0 ? "pointer" : "";
     },
     { passive: true }
   );
