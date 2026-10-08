@@ -339,12 +339,6 @@
     st.setProperty("--shade", lerp(0.35, 0, day).toFixed(3));
     st.setProperty("--hint", (1 - smooth(0, 0.04, p)).toFixed(3));
 
-    // Orologio: dalle 04:30 alle 23:45
-    const minutes = Math.round(lerp(270, 1425, p));
-    const clock = document.querySelector(".clock");
-    clock.textContent = `${String(Math.floor(minutes / 60)).padStart(2, "0")}:${String(minutes % 60).padStart(2, "0")}`;
-
-    body.classList.toggle("at-end", p > 0.97);
     if (themeMeta) themeMeta.content = rgb(top);
 
     starAlpha = Math.max(1 - smooth(0.06, 0.17, p), smooth(0.74, 0.9, p));
