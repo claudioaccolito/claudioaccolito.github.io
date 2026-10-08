@@ -251,7 +251,7 @@
     if (!whisper) return;
     const n = edges.length;
     whisper.textContent =
-      n === 0 ? whisper.dataset.default : n < 3 ? "Continua, il cielo è grande." : "Ecco il tuo segno. Resterà qui, ad aspettarti.";
+      n === 0 ? whisper.dataset.default : n < 3 ? "Continua, il cielo è grande." : "Ecco il tuo segno.";
     clearBtn.hidden = n === 0;
   }
 
