@@ -315,8 +315,7 @@ main {
   min-height: 100svh;
 }
 
-.finale-copy,
-.finale-note {
+.finale-copy {
   display: grid;
   justify-items: center;
   gap: 1rem;
@@ -355,7 +354,6 @@ main {
   transition: opacity 0.6s;
 }
 
-.clear,
 .foot nav a,
 .foot nav button {
   font-size: 0.72rem;
@@ -368,7 +366,6 @@ main {
   transition: color 0.3s, border-color 0.3s;
 }
 
-.clear:hover,
 .foot nav a:hover,
 .foot nav button:hover {
   color: rgb(var(--ink-rgb));
