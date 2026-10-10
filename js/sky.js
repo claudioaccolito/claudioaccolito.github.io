@@ -36,14 +36,14 @@
 
   const SKY = [
     [0.0, "#070a1c", "#141a3a", "#2a2550", "#0b0e24"],
-    [0.12, "#1d2350", "#5b4a7a", "#e8927c", "#1a1b3c"],
-    [0.22, "#3a5a9c", "#9fb3d6", "#f7c59f", "#2b3358"],
-    [0.38, "#2f7bd0", "#7fb6e6", "#d7ecf7", "#28406a"],
-    [0.5, "#3577c4", "#8bbbe3", "#e6eef0", "#2a3f66"],
-    [0.6, "#4a5f9e", "#c79a8a", "#f6c27a", "#3a2f4f"],
-    [0.7, "#2a2452", "#a04a6a", "#f2774f", "#241a36"],
-    [0.78, "#10133a", "#3a2a5e", "#7a3f5e", "#0e0c22"],
-    [0.88, "#04061a", "#0b1030", "#1a1a3c", "#070916"],
+    [0.10, "#1d2350", "#5b4a7a", "#e8927c", "#1a1b3c"],
+    [0.18, "#3a5a9c", "#9fb3d6", "#f7c59f", "#2b3358"],
+    [0.30, "#2f7bd0", "#7fb6e6", "#d7ecf7", "#28406a"],
+    [0.45, "#3577c4", "#8bbbe3", "#e6eef0", "#2a3f66"],
+    [0.58, "#4a5f9e", "#c79a8a", "#f6c27a", "#3a2f4f"],
+    [0.67, "#2a2452", "#a04a6a", "#f2774f", "#241a36"],
+    [0.76, "#10133a", "#3a2a5e", "#7a3f5e", "#0e0c22"],
+    [0.86, "#04061a", "#0b1030", "#1a1a3c", "#070916"],
     [1.0, "#02030d", "#070b22", "#121633", "#04050d"],
   ].map(([p, ...c]) => [p, c.map(hex)]);
 
@@ -299,7 +299,7 @@
     if (houses) houses.style.fill = rgb(mix(bottom, shade, 0.97));
 
     // Sole: sorge dietro le colline a sinistra, tramonta nella valle al centro
-    const t = (p - 0.09) / (0.76 - 0.09);
+    const t = (p - 0.1) / (0.67 - 0.1);
     const elev = Math.sin(Math.PI * clamp(t));
     const seaLine = H - SH;
     const horizon = seaLine + 0.07 * H;
@@ -314,8 +314,8 @@
     st.setProperty("--glow", (visible * lerp(1, 0.4, elev)).toFixed(3));
 
     // Luna
-    const q = smooth(0.74, 0.97, p);
-    const moonA = smooth(0.74, 0.84, p);
+    const q = smooth(0.66, 0.97, p);
+    const moonA = smooth(0.66, 0.78, p);
     const moonX = lerp(0.88, 0.76, q) * W;
     const moonY = (W < 640 ? lerp(0.41, 0.36, q) : lerp(0.6, 0.16, q)) * H;
     st.setProperty("--moon", moonA.toFixed(3));
@@ -323,7 +323,7 @@
     st.setProperty("--moon-y", `${moonY.toFixed(1)}px`);
 
     // Luci del paesino: qualcuna all'alba, tutte la sera, metà a notte fonda
-    const lights = Math.max(0.45 * (1 - smooth(0.06, 0.15, p)), smooth(0.58, 0.72, p) - 0.55 * smooth(0.93, 1, p));
+    const lights = Math.max(0.45 * (1 - smooth(0.06, 0.15, p)), smooth(0.52, 0.68, p) - 0.55 * smooth(0.93, 1, p));
     st.setProperty("--lights", lights.toFixed(3));
 
     scene = {
@@ -334,14 +334,14 @@
     };
 
     // Testo scuro quando il cielo è chiaro
-    const day = smooth(0.2, 0.3, p) * (1 - smooth(0.58, 0.66, p));
+    const day = smooth(0.18, 0.28, p) * (1 - smooth(0.56, 0.64, p));
     st.setProperty("--ink-rgb", channels(mix(hex("#f3efe6"), hex("#14203a"), day)));
     st.setProperty("--shade", lerp(0.35, 0, day).toFixed(3));
     st.setProperty("--hint", (1 - smooth(0, 0.04, p)).toFixed(3));
 
     if (themeMeta) themeMeta.content = rgb(top);
 
-    starAlpha = Math.max(1 - smooth(0.06, 0.17, p), smooth(0.74, 0.9, p));
+    starAlpha = Math.max(1 - smooth(0.06, 0.17, p), smooth(0.62, 0.82, p));
     interactive = p > 0.86;
   }
 
