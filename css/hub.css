@@ -1,0 +1,248 @@
+/* ---------- Experiments hub ---------- */
+
+.hub-wrap {
+  position: relative;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 8vw, 5rem) 1rem 4rem;
+}
+
+.hub-head {
+  max-width: 40rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.hub .eyebrow {
+  margin-top: 0;
+}
+
+.hub h1 {
+  font-size: clamp(2.6rem, 8vw, 4.6rem);
+}
+
+.hub h1 em {
+  color: var(--accent);
+}
+
+.intro {
+  margin: 1.25rem 0 0;
+  font-size: clamp(1rem, 2.4vw, 1.125rem);
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* Cards */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(243, 239, 230, 0.035);
+  border: 1px solid rgba(243, 239, 230, 0.1);
+  transition: transform 0.35s cubic-bezier(.2, .8, .2, 1), border-color 0.35s, background 0.35s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(246, 194, 122, 0.45);
+  background: rgba(243, 239, 230, 0.06);
+}
+
+.preview {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.preview svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(.2, .8, .2, 1);
+}
+
+.card:hover .preview svg {
+  transform: scale(1.04);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem 1.25rem 1.1rem;
+}
+
+.card h2 {
+  margin: 0 0 0.4rem;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.title {
+  text-decoration: none;
+}
+
+/* the title link covers the whole card */
+.title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.card-body > p {
+  margin: 0;
+  font-size: 0.93rem;
+  color: var(--muted);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.tags li {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(243, 239, 230, 0.16);
+  color: var(--muted);
+}
+
+.card-body > .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: auto;
+  padding-top: 1.1rem;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+.links a {
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.links a:first-child {
+  color: var(--accent);
+}
+
+.links a:first-child::after {
+  content: " →";
+}
+
+.links .src {
+  color: var(--muted);
+}
+
+.links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Small animations in the previews */
+
+.plane {
+  animation: glide 5s ease-in-out infinite;
+}
+
+.lights circle {
+  animation: twinkle 2.4s ease-in-out infinite;
+}
+
+.lights circle:nth-child(2) { animation-delay: 0.3s; }
+.lights circle:nth-child(3) { animation-delay: 0.6s; }
+.lights circle:nth-child(4) { animation-delay: 0.9s; }
+
+.sun {
+  animation: set 9s ease-in-out infinite alternate;
+}
+
+.drone,
+.rotors {
+  animation: hover 3s ease-in-out infinite;
+}
+
+.signal path {
+  animation: twinkle 1.8s ease-in-out infinite;
+}
+
+.signal path:nth-child(2) { animation-delay: 0.25s; }
+.signal path:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes glide {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(10px, -8px) rotate(-3deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+@keyframes set {
+  from { transform: translateY(-6px); }
+  to { transform: translateY(8px); }
+}
+
+@keyframes hover {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Footer */
+
+.hub-foot {
+  margin-top: clamp(3rem, 8vw, 5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(243, 239, 230, 0.1);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.hub-foot p {
+  margin: 0 0 0.35rem;
+}
+
+.hub-foot a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(243, 239, 230, 0.25);
+}
+
+.hub-foot a:hover {
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .preview svg {
+    transition: none;
+  }
+
+  .plane,
+  .lights circle,
+  .sun,
+  .drone,
+  .rotors,
+  .signal path {
+    animation: none;
+  }
+}
