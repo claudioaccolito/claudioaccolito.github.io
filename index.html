@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Claudio Accolito — small experiments: a 3D paper plane game, a scrolling sunset poem and a Web Bluetooth drone pilot.">
+	<meta name="description" content="Claudio Accolito — small experiments: a 3D paper plane game, a scrolling sunset poem, a Web Bluetooth drone pilot and a text-only news reader.">
 	<meta name="google-site-verification" content="vxU1F9fQHNrVIDoXHdnfFxER_dauEcdkkHSSJ95WLAw">
 	<meta name="theme-color" content="#070a1c">
 	<title>Claudio Accolito — Experiments</title>
@@ -23,7 +23,7 @@
 		<header class="hub-head">
 			<p class="eyebrow">Experiments</p>
 			<h1>Claudio <em>Accolito</em></h1>
-			<p class="intro">Small things I build for fun, mostly in the browser: a game in the clouds, a poem that lasts a whole day, a drone flown from a web page.</p>
+			<p class="intro">Small things I build for fun, mostly in the browser: a game in the clouds, a poem that lasts a whole day, a drone flown from a web page, the news without the noise.</p>
 		</header>
 
 		<main class="grid">
@@ -156,6 +156,32 @@
 					<p>Fly a Parrot Mambo minidrone straight from Chrome over Web Bluetooth: virtual sticks, flips, photos and recorded routes, no official app.</p>
 					<ul class="tags"><li>Svelte</li><li>TypeScript</li><li>Web Bluetooth</li><li>PWA</li></ul>
 					<p class="links"><a href="mambo-pilot/">Open</a><a class="src" href="mambo-pilot/?demo">Demo</a><a class="src" href="https://github.com/claudioaccolito/mambo-pilot">Source</a></p>
+				</div>
+			</article>
+
+			<article class="card">
+				<a class="preview" href="news/" tabindex="-1" aria-hidden="true">
+					<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
+						<rect width="320" height="200" fill="#f7f4ee"/>
+						<text x="44" y="52" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#22201c">Edicola</text>
+						<line x1="44" y1="66" x2="276" y2="66" stroke="#e7e1d6" stroke-width="1.5"/>
+						<g class="news-lines">
+							<rect x="44" y="84" width="54" height="5" rx="2.5" fill="#a24a2a" opacity="0.85"/>
+							<rect x="44" y="97" width="212" height="8" rx="4" fill="#22201c"/>
+							<rect x="44" y="111" width="150" height="8" rx="4" fill="#22201c"/>
+							<rect x="44" y="126" width="226" height="5" rx="2.5" fill="#6f6a61" opacity="0.45"/>
+							<rect x="44" y="136" width="190" height="5" rx="2.5" fill="#6f6a61" opacity="0.45"/>
+							<line x1="44" y1="152" x2="276" y2="152" stroke="#e7e1d6" stroke-width="1.5"/>
+							<rect x="44" y="166" width="40" height="5" rx="2.5" fill="#a24a2a" opacity="0.85"/>
+							<rect x="44" y="179" width="198" height="8" rx="4" fill="#22201c"/>
+						</g>
+					</svg>
+				</a>
+				<div class="card-body">
+					<h2><a class="title" href="news/">Edicola</a></h2>
+					<p>A calm, text-only news reader: nearly 200 Italian and international sources, filters and search, optional AI digests with a local model. No account, no tracking: your choices never leave the device.</p>
+					<ul class="tags"><li>PWA</li><li>RSS</li><li>GitHub Actions</li><li>Local LLM</li></ul>
+					<p class="links"><a href="news/">Open</a><a class="src" href="https://github.com/claudioaccolito/news">Source</a></p>
 				</div>
 			</article>
 

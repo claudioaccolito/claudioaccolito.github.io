@@ -5,6 +5,7 @@ Personal site on GitHub Pages: a small hub that links my experiments.
 - [Paper Plane](https://claudioaccolito.github.io/paper-plane/) — 3D paper plane game ([repo](https://github.com/claudioaccolito/paper-plane))
 - [Sunset Poem](https://claudioaccolito.github.io/sunset-poem/) — a day that scrolls by with the page ([repo](https://github.com/claudioaccolito/sunset-poem))
 - [Mambo Pilot](https://claudioaccolito.github.io/mambo-pilot/) — fly a Parrot Mambo over Web Bluetooth ([repo](https://github.com/claudioaccolito/mambo-pilot))
+- [Edicola](https://claudioaccolito.github.io/news/) — text-only, privacy-first news reader PWA ([repo](https://github.com/claudioaccolito/news))
 
 Each experiment is its own repository with GitHub Pages enabled, so it is served under `/<repo-name>/`.
 
